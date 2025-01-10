@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ -z "$APPDIR" ]; then
+    APPDIR="$(dirname "$(readlink -f "$0")")"
+fi
+
+export QT_QPA_PLATFORM="xcb"
+#export QT_QPA_PLATFORM=wayland
+
+exec "${APPDIR}/usr/bin/@CMAKE_PROJECT_NAME@" "$@"
+
